@@ -16,14 +16,6 @@ export default function Entries({ navigation }) {
         <Text>edit</Text>
       </PressableButton>
 
-      <PressableButton
-        onPressFunction={() => navigation.navigate("Add")}
-        defaultStyle={styles.button}
-        pressedStyle={styles.buttonPressed}
-      >
-        <Text>add</Text>
-      </PressableButton>
-
     </View>
   )
 }
