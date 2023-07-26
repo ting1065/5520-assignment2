@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet} from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import PressableButton from "../components/PressableButton";
@@ -14,6 +14,20 @@ export default function Home({ navigation }) {
   return (
     <Tab.Navigator
       screenOptions={({route})=>({
+
+        //eliminate the blank bar at the bottom of the screen
+        tabBarBackground: () => {
+          return (
+            <View
+              style={{
+                height: "100%",
+                backgroundColor: colors.componentColor,
+              }}
+            />
+          );
+        },
+
+        //set the icons on the tab bar
         tabBarIcon: ({ focused }) => {
           let iconName;
           if (route.name === "All Entries") {
@@ -30,6 +44,7 @@ export default function Home({ navigation }) {
           );
         },
 
+        //set the labels on the tab bar
         tabBarLabel: ({ focused }) => {
           const labelName = route.name;
           return (
@@ -50,6 +65,8 @@ export default function Home({ navigation }) {
         headerTintColor: colors.onComponentTextColor,
         tabBarActiveBackgroundColor: colors.componentColor,
         tabBarInactiveBackgroundColor: colors.componentColor,
+
+        //"+"button on the right of the header
         headerRight: () => {
           return (
             <PressableButton
@@ -61,6 +78,7 @@ export default function Home({ navigation }) {
             </PressableButton>
           );
         },
+
       })}
     >
       <Tab.Screen name="All Entries" component={AllEntries} />

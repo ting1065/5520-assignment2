@@ -5,16 +5,15 @@ import colors from "../styles/colors";
 
 export default function AllEntries() {
   return (
-    <SafeAreaView style={styles.container}>
-    <EntriesList isOverLimitOnly={false} />
-    </SafeAreaView>
+    <View style={styles.container}>
+      <EntriesList isOverLimitOnly={false} />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 20,
     backgroundColor: colors.backgroundColor,
   },
 });
