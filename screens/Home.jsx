@@ -1,10 +1,10 @@
-import { View, Text, StyleSheet} from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import PressableButton from "../components/PressableButton";
 import colors from "../styles/colors";
-import { AntDesign } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AllEntries from "./AllEntries";
 import OverLimitEntries from "./OverLimitEntries";
 
@@ -13,18 +13,10 @@ const Tab = createBottomTabNavigator();
 export default function Home({ navigation }) {
   return (
     <Tab.Navigator
-      screenOptions={({route})=>({
-
+      screenOptions={({ route }) => ({
         //eliminate the blank bar at the bottom of the screen
         tabBarBackground: () => {
-          return (
-            <View
-              style={{
-                height: "100%",
-                backgroundColor: colors.componentColor,
-              }}
-            />
-          );
+          return <View style={styles.tabBarBackground} />;
         },
 
         //set the icons on the tab bar
@@ -39,7 +31,9 @@ export default function Home({ navigation }) {
             <MaterialCommunityIcons
               name={iconName}
               size={24}
-              color={focused ? colors.tabIconSelectedColor : colors.tabIconColor}
+              color={
+                focused ? colors.tabIconSelectedColor : colors.tabIconColor
+              }
             />
           );
         },
@@ -49,11 +43,14 @@ export default function Home({ navigation }) {
           const labelName = route.name;
           return (
             <Text
-              style={{
-                color: focused ? colors.tabIconSelectedColor : colors.tabIconColor,
-                fontSize: 12,
-                fontWeight: "bold",
-              }}
+              style={[
+                {
+                  color: focused
+                    ? colors.tabIconSelectedColor
+                    : colors.tabIconColor,
+                },
+                styles.tabLabel,
+              ]}
             >
               {labelName}
             </Text>
@@ -61,7 +58,7 @@ export default function Home({ navigation }) {
         },
 
         headerTitleAlign: "center",
-        headerStyle: { backgroundColor: colors.componentColor},
+        headerStyle: { backgroundColor: colors.componentColor },
         headerTintColor: colors.onComponentTextColor,
         tabBarActiveBackgroundColor: colors.componentColor,
         tabBarInactiveBackgroundColor: colors.componentColor,
@@ -74,11 +71,14 @@ export default function Home({ navigation }) {
               defaultStyle={styles.addButton}
               pressedStyle={styles.addButtonPressed}
             >
-              <AntDesign name="plus" size={24} color={colors.onComponentTextColor} />
+              <AntDesign
+                name="plus"
+                size={24}
+                color={colors.onComponentTextColor}
+              />
             </PressableButton>
           );
         },
-
       })}
     >
       <Tab.Screen name="All Entries" component={AllEntries} />
@@ -88,10 +88,18 @@ export default function Home({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    addButton: {
-      marginRight: 10,
-    },
-    addButtonPressed: {
-      backgroundColor: colors.componentPressedColor,
-    },
-  });
+  addButton: {
+    marginRight: 10,
+  },
+  addButtonPressed: {
+    backgroundColor: colors.componentPressedColor,
+  },
+  tabBarBackground: {
+    height: "100%",
+    backgroundColor: colors.componentColor,
+  },
+  tabLabel: {
+    fontSize: 12,
+    fontWeight: "bold",
+  },
+});
