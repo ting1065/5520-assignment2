@@ -8,6 +8,7 @@ import { addToDB } from "../Firebase/firestore-helper";
 export default function AddEntry({ navigation }) {
   const [calories, setCalories] = useState("");
   const [description, setDescription] = useState("");
+  const [caloryThreshold, setCaloryThreshold] = useState(500);
 
   function resetInput() {
     setCalories("");
@@ -26,7 +27,9 @@ export default function AddEntry({ navigation }) {
       return;
     }
 
-    const newEntry = {calories: calories, description: description};
+    const caloriesInt = parseInt(calories);
+    const isOverLimit = caloriesInt > caloryThreshold;
+    const newEntry = {calories: caloriesInt, description: description, isOverLimit: isOverLimit, isReviewed: false};
     await addToDB(newEntry);
     navigation.goBack();
   }
