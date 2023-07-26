@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import InputUnit from "../components/InputUnit";
 import PressableButton from "../components/PressableButton";
 import colors from "../styles/colors";
+import { addToDB } from "../Firebase/firestore-helper";
 
 export default function AddEntry({ navigation }) {
   const [calories, setCalories] = useState("");
@@ -13,7 +14,8 @@ export default function AddEntry({ navigation }) {
     setDescription("");
   }
 
-  function submit() {
+  async function submit() {
+
     if (
       !calories ||
       isNaN(calories) ||
@@ -23,7 +25,9 @@ export default function AddEntry({ navigation }) {
       Alert.alert("Invalid input", "Please check your input values");
       return;
     }
-    console.log("submitted");
+
+    const newEntry = {calories: calories, description: description};
+    await addToDB(newEntry);
     navigation.goBack();
   }
 
