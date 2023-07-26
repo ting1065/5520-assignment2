@@ -25,9 +25,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   desription: {
-    fontSize: 15,
+    fontSize: 14,
     color: colors.textColor,
-    width: "24%",
+    width: "25%",
+    fontWeight: "bold",
   },
   input: {
     backgroundColor: colors.frameColor,
@@ -37,5 +38,6 @@ const styles = StyleSheet.create({
     textAlignVertical: "top",
     paddingHorizontal: 10,
     paddingVertical: 5,
+    fontSize: 14,
   },
 });
