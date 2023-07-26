@@ -47,14 +47,14 @@ export default function AddEntry({ navigation }) {
           defaultStyle={styles.button}
           pressedStyle={styles.buttonPressed}
         >
-          <Text>Reset</Text>
+          <Text style={styles.buttonText} >Reset</Text>
         </PressableButton>
         <PressableButton
           onPressFunction={() => submit()}
           defaultStyle={styles.button}
           pressedStyle={styles.buttonPressed}
         >
-          <Text>submit</Text>
+          <Text style={styles.buttonText} >submit</Text>
         </PressableButton>
       </View>
     </View>
@@ -69,11 +69,21 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-evenly",
+    marginTop: 20,
   },
   button: {
+    width: "20%",
+    height: 25,
+    justifyContent: "center",
+    alignContent: "center",
     backgroundColor: colors.componentColor,
   },
   buttonPressed: {
     backgroundColor: colors.componentPressedColor,
+  },
+  buttonText: {
+    textAlign: "center",
+    fontWeight: "bold",
+    color: colors.onComponentTextColor,
   },
 });
