@@ -1,8 +1,8 @@
 const colors = {
-    backgroundColor: '#C6F5C9',
+    backgroundColor: '#61D167',
     componentColor: '#05CA0F',
-    componentPressedColor: '#61D167',
-    frameColor: '#61D167',
+    componentPressedColor: '#C6F5C9',
+    frameColor: '#C6F5C9',
     textColor: '#05CA0F',
     onComponentTextColor: '#FFFFFF',
 }
