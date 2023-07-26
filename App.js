@@ -5,30 +5,28 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./screens/Home";
 import AddEntry from "./screens/AddEntry";
 import EditEntry from "./screens/EditEntry";
+import colors from "./styles/colors"
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerTitleAlign: "center",
+          headerStyle: { backgroundColor: colors.componentColor},
+          headerTintColor: colors.onComponentTextColor,
+        }}
+      >
         <Stack.Screen
           name="Home"
           component={Home}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="Add" component={AddEntry} />
-        <Stack.Screen name="Edit" component={EditEntry} />
+        <Stack.Screen name="Add An Entry" component={AddEntry} />
+        <Stack.Screen name="Edit Entry" component={EditEntry} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

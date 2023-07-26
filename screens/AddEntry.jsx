@@ -70,8 +70,10 @@ export default function AddEntry({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     paddingTop: 50,
     paddingHorizontal: 20,
+    backgroundColor: colors.backgroundColor,
   },
   buttonContainer: {
     flexDirection: "row",
