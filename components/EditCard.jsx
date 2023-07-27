@@ -6,7 +6,6 @@ import colors from "../styles/colors";
 
 
 export default function EditCard({ entry, deleteEntry, reviewEntry }) {
-
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Calories: {entry.calories}</Text>
@@ -19,8 +18,8 @@ export default function EditCard({ entry, deleteEntry, reviewEntry }) {
         >
           <AntDesign name="delete" size={24} color={colors.onComponentTextColor} />
         </PressableButton>
-        {entry.isOverLimit &&
-          !entry.isReviewd && (
+        {(entry.isOverLimit &&
+          !entry.isReviewed) && (
             <PressableButton
               onPressFunction={() => reviewEntry(entry.id)}
               defaultStyle={styles.button}

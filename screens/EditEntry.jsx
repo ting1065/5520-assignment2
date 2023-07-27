@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Alert } from 'react-native'
 import React from 'react'
 import EditCard from '../components/EditCard'
 import colors from '../styles/colors'
@@ -8,13 +8,39 @@ import { deleteFromDB, markReviewedFromDB } from '../Firebase/firestore-helper'
 export default function EditEntry({ route, navigation }) {
 
   async function deleteEntry(entryID) {
-    await deleteFromDB(entryID);
-    navigation.goBack();
+
+    Alert.alert("Delete", "Are you sure you want to delete this?", [
+      {
+        text: "No",
+      },
+      {
+        text: "Yes",
+        onPress: async () => {
+          await deleteFromDB(entryID);
+          navigation.goBack();
+        },
+      },
+    ]
+    );
+
   }
 
   function reviewEntry(entryID) {
-    markReviewedFromDB(entryID);
-    navigation.goBack();
+
+    Alert.alert("Important", "Are you sure you want to mark this item as reviewed?", [
+      {
+        text: "No",
+      },
+      {
+        text: "Yes",
+        onPress: async () => {
+          markReviewedFromDB(entryID);
+          navigation.goBack();
+        },
+      },
+    ]
+    );
+
   }
 
   return (
