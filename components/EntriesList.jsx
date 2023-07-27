@@ -4,8 +4,12 @@ import EntryInList from "./EntryInList";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../Firebase/firebase-setup";
 
-export default function EntriesList({ isOverLimitOnly }) {
+export default function EntriesList({ isOverLimitOnly, navigation }) {
   const [entries, setEntries] = useState([]);
+
+  function editEntry(entry) {
+    navigation.navigate("Edit Entry", { pressedEntry: entry });
+  }
 
   useEffect(() => {
     const q = isOverLimitOnly
@@ -32,7 +36,7 @@ export default function EntriesList({ isOverLimitOnly }) {
   return (
     <FlatList
       data={entries}
-      renderItem={({ item }) => <EntryInList entry={item} />}
+      renderItem={({ item }) => <EntryInList editEntry={editEntry} entry={item} />}
     />
   );
 }

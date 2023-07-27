@@ -3,10 +3,10 @@ import React from 'react'
 import EntriesList from '../components/EntriesList'
 import colors from '../styles/colors'
 
-export default function OverLimitEntries() {
+export default function OverLimitEntries({navigation}) {
   return (
     <View style={styles.container} >
-      <EntriesList isOverLimitOnly={true} />
+      <EntriesList isOverLimitOnly={true} navigation={navigation}/>
     </View>
   )
 }

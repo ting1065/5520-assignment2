@@ -4,14 +4,14 @@ import PressableButton from "./PressableButton";
 import { FontAwesome } from "@expo/vector-icons";
 import colors from "../styles/colors";
 
-export default function EntryInList({ entry }) {
+export default function EntryInList({ editEntry, entry}) {
   function pressHandler() {
-    console.log("pressed");
+    editEntry(entry);
   }
 
   return (
     <PressableButton
-      onPressFunction={pressHandler}
+      onPressFunction={()=>pressHandler()}
       defaultStyle={styles.button}
       pressedStyle={styles.buttonPressed}
     >
