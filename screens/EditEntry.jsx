@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import EditCard from '../components/EditCard'
 import colors from '../styles/colors'
-import { deleteFromDB } from '../Firebase/firestore-helper'
+import { deleteFromDB, markReviewedFromDB } from '../Firebase/firestore-helper'
 
 
 export default function EditEntry({ route, navigation }) {
@@ -13,7 +13,7 @@ export default function EditEntry({ route, navigation }) {
   }
 
   function reviewEntry(entryID) {
-    console.log("review entry, ID: ", entryID)
+    markReviewedFromDB(entryID);
     navigation.goBack();
   }
 
