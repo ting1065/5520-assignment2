@@ -16,7 +16,6 @@ export default function AddEntry({ navigation }) {
   }
 
   async function submit() {
-
     if (
       !calories ||
       isNaN(calories) ||
@@ -29,7 +28,12 @@ export default function AddEntry({ navigation }) {
 
     const caloriesInt = parseInt(calories);
     const isOverLimit = caloriesInt > caloryThreshold;
-    const newEntry = {calories: caloriesInt, description: description, isOverLimit: isOverLimit, isReviewed: false};
+    const newEntry = {
+      calories: caloriesInt,
+      description: description,
+      isOverLimit: isOverLimit,
+      isReviewed: false,
+    };
     await addToDB(newEntry);
     navigation.goBack();
   }
@@ -54,14 +58,14 @@ export default function AddEntry({ navigation }) {
           defaultStyle={styles.button}
           pressedStyle={styles.buttonPressed}
         >
-          <Text style={styles.buttonText} >Reset</Text>
+          <Text style={styles.buttonText}>Reset</Text>
         </PressableButton>
         <PressableButton
           onPressFunction={() => submit()}
           defaultStyle={styles.button}
           pressedStyle={styles.buttonPressed}
         >
-          <Text style={styles.buttonText} >submit</Text>
+          <Text style={styles.buttonText}>submit</Text>
         </PressableButton>
       </View>
     </View>

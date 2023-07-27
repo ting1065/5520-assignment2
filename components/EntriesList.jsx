@@ -1,4 +1,4 @@
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
 import EntryInList from "./EntryInList";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
@@ -36,7 +36,9 @@ export default function EntriesList({ isOverLimitOnly, navigation }) {
   return (
     <FlatList
       data={entries}
-      renderItem={({ item }) => <EntryInList editEntry={editEntry} entry={item} />}
+      renderItem={({ item }) => (
+        <EntryInList editEntry={editEntry} entry={item} />
+      )}
     />
   );
 }

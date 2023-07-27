@@ -2,12 +2,17 @@ import { View, Text, TextInput, StyleSheet } from "react-native";
 import React from "react";
 import colors from "../styles/colors";
 
-export default function InputUnit({ content, setContent, inputHeight, desription }) {
+export default function InputUnit({
+  content,
+  setContent,
+  inputHeight,
+  desription,
+}) {
   return (
-    <View style={[styles.container, {height: inputHeight}]} >
-      <Text style={styles.desription} >{desription}</Text>
+    <View style={[styles.container, { height: inputHeight }]}>
+      <Text style={styles.desription}>{desription}</Text>
       <TextInput
-        style={[styles.input, {height: inputHeight}]}
+        style={[styles.input, { height: inputHeight }]}
         value={content}
         onChangeText={(currentContent) => setContent(currentContent)}
         multiline={inputHeight > 25 ? true : false}

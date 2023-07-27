@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 import colors from "../styles/colors";
@@ -11,7 +11,11 @@ export default function BackButton({ onPress }) {
       pressedStyle={styles.containerPressed}
       onPressFunction={() => onPress()}
     >
-      <FontAwesome5 name="chevron-left" size={18} color={colors.onComponentTextColor} />
+      <FontAwesome5
+        name="chevron-left"
+        size={18}
+        color={colors.onComponentTextColor}
+      />
       <Text style={styles.text}>Back</Text>
     </PressableButton>
   );

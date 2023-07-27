@@ -4,7 +4,6 @@ import PressableButton from "./PressableButton";
 import { AntDesign } from "@expo/vector-icons";
 import colors from "../styles/colors";
 
-
 export default function EditCard({ entry, deleteEntry, reviewEntry }) {
   return (
     <View style={styles.container}>
@@ -16,19 +15,25 @@ export default function EditCard({ entry, deleteEntry, reviewEntry }) {
           defaultStyle={styles.button}
           pressedStyle={styles.buttonPressed}
         >
-          <AntDesign name="delete" size={24} color={colors.onComponentTextColor} />
+          <AntDesign
+            name="delete"
+            size={24}
+            color={colors.onComponentTextColor}
+          />
         </PressableButton>
-        {(entry.isOverLimit &&
-          !entry.isReviewed) && (
-            <PressableButton
-              onPressFunction={() => reviewEntry(entry.id)}
-              defaultStyle={styles.button}
-              pressedStyle={styles.buttonPressed}
-            >
-              <AntDesign name="check" size={24} color={colors.onComponentTextColor} />
-            </PressableButton>
-          )
-        }
+        {entry.isOverLimit && !entry.isReviewed && (
+          <PressableButton
+            onPressFunction={() => reviewEntry(entry.id)}
+            defaultStyle={styles.button}
+            pressedStyle={styles.buttonPressed}
+          >
+            <AntDesign
+              name="check"
+              size={24}
+              color={colors.onComponentTextColor}
+            />
+          </PressableButton>
+        )}
       </View>
     </View>
   );
@@ -71,5 +76,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     marginTop: 5,
-  }
+  },
 });
