@@ -8,3 +8,11 @@ export async function addToDB(entry) {
     console.log("Error when adding entry: ", e);
   }
 }
+
+export async function deleteFromDB(id) {
+  try {
+    await deleteDoc(doc(db, "entries", id));
+  } catch (e) {
+    console.log("Error when deleting entry: ", e);
+  }
+}

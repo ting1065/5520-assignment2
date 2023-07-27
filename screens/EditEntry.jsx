@@ -2,12 +2,13 @@ import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import EditCard from '../components/EditCard'
 import colors from '../styles/colors'
+import { deleteFromDB } from '../Firebase/firestore-helper'
 
 
 export default function EditEntry({ route, navigation }) {
 
-  function deleteEntry(entryID) {
-    console.log("delete entry, ID: ", entryID)
+  async function deleteEntry(entryID) {
+    await deleteFromDB(entryID);
     navigation.goBack();
   }
 
