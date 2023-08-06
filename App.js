@@ -1,20 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Home from "./screens/Home";
+import AddEntry from "./screens/AddEntry";
+import EditEntry from "./screens/EditEntry";
+import colors from "./styles/colors";
+import BackButton from "./components/BackButton";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerTitleAlign: "center",
+          headerStyle: { backgroundColor: colors.componentColor },
+          headerTintColor: colors.onComponentTextColor,
+        }}
+      >
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Add An Entry"
+          component={AddEntry}
+          options={({ navigation }) => ({
+            headerLeft: () => (
+              <BackButton onPress={() => navigation.goBack()} />
+            ),
+          })}
+        />
+        <Stack.Screen
+          name="Edit Entry"
+          component={EditEntry}
+          options={({ navigation }) => ({
+            headerLeft: () => (
+              <BackButton onPress={() => navigation.goBack()} />
+            ),
+          })}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
